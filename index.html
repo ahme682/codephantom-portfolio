@@ -18,14 +18,25 @@
         }
         header {
             background: linear-gradient(135deg, #111827, #1f2937);
-            padding: 40px 20px;
-            text-align: center;
+            padding: 20px 40px;
             border-bottom: 2px solid #06b6d4;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            text-align: right;
+        }
+        header .logo-img {
+            width: 200px;
+            height: 120px;
+            
+            border-radius: 50%;
+            
         }
         header h1 {
             font-size: 2.5rem;
             color: #06b6d4;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         header p {
             font-size: 1.1rem;
@@ -50,24 +61,47 @@
             background-color: #1f2937;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid #374151;
         }
+        /* تعديل الـ grid لعرض البطاقات بشكل متساوي */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ممكن تزود الـ minmax لو البطاقات صغيرة أوي */
             gap: 20px;
         }
-        .project-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+
+        /* تعديل خاص بـ صور مشروع School Manager المتعددة */
+        /* تعديل صور School Manager عشان تكبر وتبقى واضحة */
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* تعرضهم صورتين جنب بعض بشكل منظم وواسع */
+            gap: 50px;
+            margin-bottom: 15px;
+            background-color: transparent;
+        }
+
+        .project-images img {
+            width: 100%; /* تملى المساحة المتاحة بالعرض */
+            height: 350px; /* زودنا الارتفاع عشان التفاصيل تبان */
+            object-fit: cover; /* ملء الكادر بشكل متناسق ومريح للع عين */
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+        }
+        /* تعديل خاص بـ صورة مشروع Calculate The age الفردية */
+        .single-image {
+            width: 100%; /* تاخد عرض الكارد كله */
+            height: auto; /* الارتفاع يتظبط تلقائي حسب أبعاد الصورة الأصلية */
+            object-fit: contain; /* عشان تظهر كاملة من غير ما تتقص */
             border-radius: 8px;
             margin-bottom: 10px;
+            background-color: #ffffff;
+            border: 1px solid #4b5563;
         }
         .project-card h3 {
             color: #f3f4f6;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
         }
         .project-card p {
             color: #9ca3af;
@@ -109,12 +143,15 @@
 <body>
 
     <header>
-        <h1>CodePhantom</h1>
-        <p>The Digital Alchemist | Programmer & Creator</p>
+        <img src="logo.png" alt="CodePhantom Logo" class="logo-img">
+        <div class="text-content">
+            <h1>CodePhantom</h1>
+            <p>The Digital Alchemist | Programmer & Creator</p>
+        </div>
     </header>
 
     <div class="container">
-        <!-- نبذة عني -->
+        <!-- من أنا -->
         <section>
             <h2>من أنا؟</h2>
             <div class="about-card">
@@ -126,21 +163,26 @@
         <section>
             <h2>معرض أعمالي ومشاريعي</h2>
             <div class="projects-grid">
-                <!-- Calculate The age -->
-                <div class="project-card">
-                    <img src="project1" alt="Project 1">
-                    <h3>Calculate The age</h3>
-                    <p>لقطة من أعمال التطوير والتطبيقات الرقمية.</p>
-                </div>
-                <!-- School Manager -->
+                
+                <!-- مشروع School Manager -->
                 <div class="project-card">
                     <h3>School Manager</h3>
-		    <img src="project2(1)" alt="Project 2-1">
-                    <img src="project2(2)" alt="Project 2-2">
-                    <img src="project2(3)" alt="Project 2-3">
-                    <img src="project2(4)" alt="Project 2-4">
-                    <p>عرض تفصيلي لأكواد وهيكلة البرمجيات.</p>
+                    <div class="project-images">
+                        <img src="project2(1).jpeg" alt="Project 2-1">
+                        <img src="project2(2).jpeg" alt="Project 2-2">
+                        <img src="project2(3).jpeg" alt="Project 2-3">
+                        <img src="project2(4).jpeg" alt="Project 2-4">
+                    </div>
+                    <p>عرض تفصيلي لأكواد وهيكلة البرمجيات الخاصة بنظام إدارة المدرسة.</p>
                 </div>
+
+                <!-- مشروع Calculate The age -->
+                <div class="project-card">
+                    <h3>Calculate The age</h3>
+                    <img src="project1.jpeg" alt="Calculate The age" class="single-image">
+                    <p>لقطة من تطبيق حساب العمر وتطوير الواجهات الرقمية.</p>
+                </div>
+
             </div>
         </section>
 
